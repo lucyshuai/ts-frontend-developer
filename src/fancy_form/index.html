@@ -12,17 +12,20 @@
 <body>
 
   <!-- You may wrap the form in your own elements if necessary. -->
-  <form onsubmit="return !1">
+  <form onsubmit="return sendBTC()">
     <label for="input-address">Bitcoin Address</label>
-    <input id="input-address" placeholder="16q4PinynazaMYfv24juNLkbjkDQxJo2dc" />
+    <input id="input-address" placeholder="16q4PinynazaMYfv24juNLkbjkDQxJo2dc"  onkeypress="return blockSpecialChar(event)" oninput="inputAddress()" required/>
+    <span id="address-error" class="error-input">Address must be 34 characters length, please check again.</span>
 
     <label for="input-amount">Amount to send</label>
-    <input id="input-amount" placeholder="0.0000" />
+    <input id="input-amount" placeholder="0.0000"  type="number" step="0.00001" oninput="inputAmount()" required/>
+    <span id="amount-error" class="error-input">Amount must be greater than 0</span>
 
     <label for="input-otp">OTP Authentication</label>
-    <input type="number" id="input-otp" placeholder="SMS OTP" />
+    <input type="number" id="input-otp" placeholder="SMS OTP" oninput="inputOTP()" required/>
+    <span id="otp-error" class="error-input">OTP must be a 6 digits number, please check your SMS</span>
 
-    <button>SEND BTC</button>
+    <button id="Btn" type="submit">SEND BTC</button>
   </form>
 </body>
 
